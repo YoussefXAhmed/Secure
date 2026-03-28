@@ -19,7 +19,7 @@ export default function Layout({ children }) {
 
         <nav className="space-y-2">
           <Link to="/dashboard" className={linkStyle('/dashboard')}>Dashboard</Link>
-          <Link to="/vault" className={linkStyle('/vault')}>Vault</Link>
+          <Link to="/vault" className={linkStyle('/vault')}>Passwords</Link>
           <Link to="/trash" className={linkStyle('/trash')}>Trash</Link>
           <Link to="/settings" className={linkStyle('/settings')}>Settings</Link>
         </nav>
