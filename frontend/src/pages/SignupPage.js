@@ -9,7 +9,7 @@ export default function SignupPage() {
   const nav = useNavigate();
 
   const signup = async () => {
-    await axios.post('http://localhost:5000/signup', { email, password });
+    await axios.post('http://16.170.159.191:5000/signup', { email, password });
     nav('/');
   };
 

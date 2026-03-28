@@ -16,7 +16,7 @@ export default function SettingsPage() {
 
     try {
       await axios.put(
-        'http://localhost:5000/change-password',
+        'http://16.170.159.191:5000/change-password',
         { oldPassword, newPassword },
         { headers: { authorization: token } }
       );

@@ -13,7 +13,7 @@ export default function VaultPage() {
   const token = localStorage.getItem('token');
 
   const fetchData = async () => {
-    const res = await axios.get('http://localhost:5000/passwords', {
+    const res = await axios.get('http://16.170.159.191:5000/passwords', {
       headers: { authorization: token }
     });
     setData(res.data);
@@ -25,7 +25,7 @@ export default function VaultPage() {
     }
 
     await axios.post(
-      'http://localhost:5000/passwords',
+      'http://16.170.159.191:5000/passwords',
       { site, username, password },
       { headers: { authorization: token } }
     );
@@ -39,7 +39,7 @@ export default function VaultPage() {
   };
 
   const del = async (id) => {
-    await axios.delete(`http://localhost:5000/passwords/${id}`, {
+    await axios.delete(`http://16.170.159.191:5000/passwords/${id}`, {
       headers: { authorization: token }
     });
 

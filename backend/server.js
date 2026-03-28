@@ -113,4 +113,4 @@ app.put('/restore/:id', auth, async (req, res) => {
   res.send('Restored');
 });
 
-app.listen(5000, () => console.log('Server running on http://localhost:5000'));
+app.listen(5000, () => console.log('Server running on http://16.170.159.191:5000'));

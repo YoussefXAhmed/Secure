@@ -8,14 +8,14 @@ export default function TrashPage() {
   const token = localStorage.getItem('token');
 
   const fetchData = async () => {
-    const res = await axios.get('http://localhost:5000/trash', {
+    const res = await axios.get('http://16.170.159.191:5000/trash', {
       headers: { authorization: token }
     });
     setData(res.data);
   };
 
   const restore = async (id) => {
-    await axios.put(`http://localhost:5000/restore/${id}`, {}, {
+    await axios.put(`http://16.170.159.191:5000/restore/${id}`, {}, {
       headers: { authorization: token }
     });
 
