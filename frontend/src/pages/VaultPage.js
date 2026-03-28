@@ -60,7 +60,7 @@ export default function VaultPage() {
 
   return (
     <Layout>
-      <h1 className="text-3xl mb-6 font-bold">🔐 Vault</h1>
+      <h1 className="text-3xl mb-6 font-bold">🔐 Passwords</h1>
 
       {/* Add Form */}
       <div className="bg-gray-800/70 backdrop-blur-lg p-4 rounded-xl mb-6 flex gap-2 flex-wrap border border-gray-700">
