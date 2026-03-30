@@ -110,16 +110,6 @@ export default function VaultPage() {
               {/* Header */}
               <div className="flex items-center gap-3 mb-3">
 
-                {/* Logo */}
-                <img
-                  src={`https://logo.clearbit.com/${domain}`}
-                  alt="logo"
-                  className="w-10 h-10 rounded bg-white"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
-                />
-
                 {/* Site name */}
                 <h2 className="text-xl font-semibold capitalize">
                   {item.site}
