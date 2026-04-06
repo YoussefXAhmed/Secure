@@ -3,17 +3,19 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
+const path = require('path');
 
-const app = express(); 
+const app = express();
 
 app.use(express.json());
 app.use(cors());
 
+// ================= DB =================
 mongoose.connect('mongodb://127.0.0.1:27017/password_manager')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
-// Models
+// ================= Models =================
 const User = mongoose.model('User', {
   email: String,
   password: String
@@ -27,7 +29,7 @@ const Password = mongoose.model('Password', {
   deleted: { type: Boolean, default: false }
 });
 
-// Auth Middleware
+// ================= Auth Middleware =================
 const auth = (req, res, next) => {
   const token = req.headers.authorization;
   if (!token) return res.status(401).send('No token');
@@ -40,6 +42,8 @@ const auth = (req, res, next) => {
     res.status(401).send('Invalid token');
   }
 };
+
+// ================= Routes =================
 
 // Signup
 app.post('/signup', async (req, res) => {
@@ -113,4 +117,19 @@ app.put('/restore/:id', auth, async (req, res) => {
   res.send('Restored');
 });
 
-app.listen(5000, () => console.log('Server running on http://16.170.159.191:5000'));
+// ================= 🔥 FRONTEND LINK =================
+
+// serve React build
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+// handle all routes → React
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
+
+// ================= Server =================
+const PORT = 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://YOUR-IP:${PORT}`);
+});
