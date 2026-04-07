@@ -22,7 +22,7 @@ export default function SignupPage() {
       setLoading(true);
       setError('');
 
-      await axios.post(`${BASE_URL}/change-password`, { email, password });
+      await axios.post(`${BASE_URL}/signup`, { email, password });
 
       nav('/');
     } catch (err) {
@@ -34,9 +34,7 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-gray-900 to-black text-white">
-
       <div className="backdrop-blur-lg bg-white/10 border border-white/20 p-8 rounded-2xl shadow-xl w-96">
-
         <h2 className="text-3xl font-bold text-center mb-6">
           Create Account
         </h2>
@@ -48,7 +46,6 @@ export default function SignupPage() {
         )}
 
         <div className="space-y-4">
-
           <input
             placeholder="Email"
             onChange={e => setEmail(e.target.value)}
@@ -76,7 +73,6 @@ export default function SignupPage() {
           >
             {loading ? 'Creating account...' : 'Sign Up'}
           </button>
-
         </div>
 
         <p className="mt-6 text-center text-sm text-gray-300">
@@ -85,7 +81,6 @@ export default function SignupPage() {
             Login
           </Link>
         </p>
-
       </div>
     </div>
   );

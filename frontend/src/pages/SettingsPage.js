@@ -7,27 +7,35 @@ import toast from 'react-hot-toast';
 export default function SettingsPage() {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const token = localStorage.getItem('token');
 
   const changePassword = async () => {
+    if (!token) {
+      return toast.error('Unauthorized ❌');
+    }
+
     if (!oldPassword || !newPassword) {
-      return toast.error("Fill all fields ❌");
+      return toast.error('Fill all fields ❌');
     }
 
     try {
+      setLoading(true);
+
       await axios.put(
         `${BASE_URL}/change-password`,
         { oldPassword, newPassword },
         { headers: { authorization: token } }
       );
 
-      toast.success("Password Updated 🔐");
-
+      toast.success('Password Updated 🔐');
       setOldPassword('');
       setNewPassword('');
     } catch (err) {
-      toast.error("Wrong old password ❌");
+      toast.error('Wrong old password ❌');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -56,9 +64,10 @@ export default function SettingsPage() {
 
         <button
           onClick={changePassword}
+          disabled={loading}
           className="bg-blue-600 px-4 py-2 rounded w-full"
         >
-          Change Password
+          {loading ? 'Updating...' : 'Change Password'}
         </button>
       </div>
     </Layout>

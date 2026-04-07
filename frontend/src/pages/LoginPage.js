@@ -14,7 +14,7 @@ export default function LoginPage() {
     try {
       setLoading(true);
       setError('');
-      const res = await axios.post(`${BASE_URL}/change-password`, { email, password });
+      const res = await axios.post(`${BASE_URL}/login`, { email, password });
       localStorage.setItem('token', res.data.token);
       nav('/dashboard');
     } catch (err) {
