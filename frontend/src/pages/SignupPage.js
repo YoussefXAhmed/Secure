@@ -1,4 +1,5 @@
 // src/pages/SignupPage.js
+import { BASE_URL } from '../api';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
@@ -21,7 +22,7 @@ export default function SignupPage() {
       setLoading(true);
       setError('');
 
-      await axios.post('http://13.60.209.185:5000/signup', { email, password });
+      await axios.post(`${BASE_URL}/change-password`, { email, password });
 
       nav('/');
     } catch (err) {

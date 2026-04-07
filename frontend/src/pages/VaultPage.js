@@ -1,3 +1,4 @@
+import { BASE_URL } from '../api';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Layout from '../Layout';
@@ -13,7 +14,7 @@ export default function VaultPage() {
   const token = localStorage.getItem('token');
 
   const fetchData = async () => {
-    const res = await axios.get('http://13.60.209.185:5000/passwords', {
+    const res = await axios.get(`${BASE_URL}/change-password`, {
       headers: { authorization: token }
     });
     setData(res.data);
@@ -25,7 +26,7 @@ export default function VaultPage() {
     }
 
     await axios.post(
-      'http://13.60.209.185:5000/passwords',
+      `${BASE_URL}/change-password`,
       { site, username, password },
       { headers: { authorization: token } }
     );
@@ -38,14 +39,14 @@ export default function VaultPage() {
     fetchData();
   };
 
-  const del = async (id) => {
-    await axios.delete(`http://13.60.209.185:5000/passwords/${id}`, {
-      headers: { authorization: token }
-    });
+const del = async (id) => {
+  await axios.delete(`${BASE_URL}/passwords/${id}`, {
+    headers: { authorization: token }
+  });
 
-    toast("Moved to Trash 🗑️");
-    fetchData();
-  };
+  toast("Moved to Trash 🗑️");
+  fetchData();
+};
 
   const copy = (text) => {
     navigator.clipboard.writeText(text);

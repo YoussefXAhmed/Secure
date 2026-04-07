@@ -1,3 +1,4 @@
+import { BASE_URL } from '../api';
 import { useState } from 'react';
 import axios from 'axios';
 import Layout from '../Layout';
@@ -16,7 +17,7 @@ export default function SettingsPage() {
 
     try {
       await axios.put(
-        'http://13.60.209.185:5000/change-password',
+        `${BASE_URL}/change-password`,
         { oldPassword, newPassword },
         { headers: { authorization: token } }
       );

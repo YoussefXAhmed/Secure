@@ -1,3 +1,4 @@
+import { BASE_URL } from '../api';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
@@ -13,7 +14,7 @@ export default function LoginPage() {
     try {
       setLoading(true);
       setError('');
-      const res = await axios.post('http://13.60.209.185:5000/login', { email, password });
+      const res = await axios.post(`${BASE_URL}/change-password`, { email, password });
       localStorage.setItem('token', res.data.token);
       nav('/dashboard');
     } catch (err) {

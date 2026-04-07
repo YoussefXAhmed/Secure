@@ -1,3 +1,4 @@
+import { BASE_URL } from '../api';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Layout from '../Layout';
@@ -16,7 +17,7 @@ fetchData();
 
 const fetchData = async () => {
 try {
-const res = await axios.get('http://13.60.209.185:5000/passwords', {
+const res = await axios.get(`${BASE_URL}/change-password`, {
 headers: { authorization: token }
 });
 setData(res.data);
