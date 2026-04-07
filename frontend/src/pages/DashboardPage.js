@@ -16,7 +16,7 @@ fetchData();
 
 const fetchData = async () => {
 try {
-const res = await axios.get('http://16.170.159.191:5000/passwords', {
+const res = await axios.get('http://13.60.209.185:5000/passwords', {
 headers: { authorization: token }
 });
 setData(res.data);

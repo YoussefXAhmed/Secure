@@ -13,7 +13,7 @@ export default function LoginPage() {
     try {
       setLoading(true);
       setError('');
-      const res = await axios.post('http://16.170.159.191:5000/login', { email, password });
+      const res = await axios.post('http://13.60.209.185:5000/login', { email, password });
       localStorage.setItem('token', res.data.token);
       nav('/dashboard');
     } catch (err) {

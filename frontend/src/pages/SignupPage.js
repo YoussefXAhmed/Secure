@@ -21,7 +21,7 @@ export default function SignupPage() {
       setLoading(true);
       setError('');
 
-      await axios.post('http://16.170.159.191:5000/signup', { email, password });
+      await axios.post('http://13.60.209.185:5000/signup', { email, password });
 
       nav('/');
     } catch (err) {
